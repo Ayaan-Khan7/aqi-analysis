@@ -1,1 +1,3 @@
-# aqi-analysis
+# AQI Analysis
+
+AQI Analysis is a data visualization and analysis project focused on understanding air quality and the relationship between the Air Quality Index (AQI) and major pollutants such as PM2.5, PM10, NO₂, SO₂, CO, and O₃. The project uses data analysis and visualization techniques to identify pollution patterns, compare pollutant levels with AQI, and explore situations where the overall AQI may not fully represent the risk associated with individual pollutants. The analysis uses Python-based data processing and visualization tools to generate meaningful insights from air quality data and improve understanding of pollution trends and potential exposure risks.
