@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Research Project: AQI vs PM2.5 Analysis</title>
+    <!-- Modern academic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --primary-accent: #0284c7;
+            --danger-accent: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .goal-banner {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary-accent);
+            padding: 1rem 1.5rem;
+            margin-bottom: 2.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .goal-banner strong {
+            color: var(--primary-accent);
+        }
+
+        .graph-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .graph-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        .graph-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background-color: #fcfcfd;
+        }
+
+        .graph-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .image-container {
+            padding: 1.5rem;
+            text-align: center;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.25rem;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .description-area {
+            padding: 1.5rem;
+            background-color: #fafafa;
+        }
+
+        .description-area h3 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .description-area p {
+            font-size: 1rem;
+            color: #334155;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Air Quality Research Analysis</h1>
+            <p>Evaluating the Reliability of Aggregate Air Quality Indices (AQI) Against Primary Fine Particulate
+                Guidelines</p>
+        </header>
+
+        <div class="goal-banner">
+            <p><strong>Core Research Objective:</strong> Demonstrating empirical scenarios where the reported aggregate
+                Air Quality Index (AQI) appears officially "Safe" or "Satisfactory" (&lt;100), while ambient fine
+                particulate concentrations (PM<sub>2.5</sub>) actively breach World Health Organization (WHO) 24-hour
+                health thresholds (&gt;15 µg/m³).</p>
+        </div>
+
+        <!-- Graph 1: Scatter Plot -->
+        <div class="graph-card">
+            <div class="graph-header">
+                <h2>1. Bivariate Scatter Plot: Isolating False Safe Discrepancies</h2>
+            </div>
+            <div class="image-container">
+                <img src="vis1_scatter_plot.png" alt="Scatter Plot comparing AQI vs PM2.5">
+            </div>
+            <div class="description-area">
+                <h3>Graph Description</h3>
+                <p>This graph compares reported aggregate AQI indices directly against corresponding primary
+                    PM<sub>2.5</sub> observations. Standard data points are plotted in light blue, while critical "False
+                    Safe" conditions are explicitly flagged in red. A linear trendline tracks overall behavioral
+                    scaling, proving that while AQI correlates broadly with particulate concentrations, strict sub-index
+                    alert mechanisms routinely fail to isolate acute local fine-particulate exposure.</p>
+            </div>
+        </div>
+
+        <!-- Graph 2: Heatmap -->
+        <div class="graph-card">
+            <div class="graph-header">
+                <h2>2. Frequency Matrix Heatmap: Tier-by-Tier Exposure Mapping</h2>
+            </div>
+            <div class="image-container">
+                <img src="vis2_heatmap.png" alt="Heatmap showing AQI categories vs PM2.5 risk tiers">
+            </div>
+            <div class="description-area">
+                <h3>Graph Description</h3>
+                <p>This cross-tabulation matrix details the precise daily distribution intersection between statutory
+                    reported AQI categories and true biological PM<sub>2.5</sub> exposure tiers. The internal numerical
+                    annotations display day counts per grid cell. The visual clustering clearly exposes significant
+                    non-zero overlaps where residents breathing air rated officially as "Satisfactory" are
+                    simultaneously sustaining Unhealthy or Poor PM<sub>2.5</sub> ambient loads.</p>
+            </div>
+        </div>
+
+        <!-- Graph 3: Time Series Plot -->
+        <div class="graph-card">
+            <div class="graph-header">
+                <h2>3. Long-Term Time Series: Seasonal Fluctuations</h2>
+            </div>
+            <div class="image-container">
+                <img src="vis3_time_series.png" alt="Time series line plot of AQI and PM2.5 averages over time">
+            </div>
+            <div class="description-area">
+                <h3>Graph Description</h3>
+                <p>Tracking air quality over prolonged multi-year frames reveals severe winter season spikes driven by
+                    regional meteorology. By graphing monthly average trajectories alongside a permanent green WHO
+                    reference line, we observe robust continuous trend tracking while demonstrating that average
+                    baseline PM<sub>2.5</sub> levels persistently hover far above recommended safe respiratory margins
+                    throughout the vast majority of the timeline.</p>
+            </div>
+        </div>
+
+        <!-- Graph 4: City Comparison Bar Chart -->
+        <div class="graph-card">
+            <div class="graph-header">
+                <h2>4. Horizontal City Ranking: Hidden Exposure Proportions</h2>
+            </div>
+            <div class="image-container">
+                <img src="vis4_city_comparison.png"
+                    alt="Horizontal bar chart showing percentage of false safe days across cities">
+            </div>
+            <div class="description-area">
+                <h3>Graph Description</h3>
+                <p>This bar chart evaluates different regional urban centers strictly on their empirical percentage of
+                    unflagged exposure days. The values denote the proportion of days out of total officially safe days
+                    where PM<sub>2.5</sub> concentrations exceeded safe physiological limits. Cities ranked at the top
+                    present the highest public health masking risk, showing that relying exclusively on broad aggregate
+                    AQI broadcasts provides inadequate individual protection.</p>
+            </div>
+        </div>
+
+        <!-- Graph 5: Violin Plot -->
+        <div class="graph-card">
+            <div class="graph-header">
+                <h2>5. Density Distribution Modeling: Particulate Ranges per Tier</h2>
+            </div>
+            <div class="image-container">
+                <img src="vis5_violin_plot.png"
+                    alt="Violin plot mapping density distributions of PM2.5 across AQI categories">
+            </div>
+            <div class="description-area">
+                <h3>Graph Description</h3>
+                <p>Figure illustrates the distribution of observed PM2.5 concentrations across official Indian AQI categories using violin density plots. The width of each violin represents the frequency distribution of PM2.5 values within a particular AQI tier, while the internal markers indicate the central tendency and spread of the data. Reference lines corresponding to the WHO 24-hour PM2.5 guideline (15 µg/m³) and the Indian National Ambient Air Quality Standard (60 µg/m³) are included for direct comparison against health-based thresholds.
+
+The visualization reveals substantial overlap in PM2.5 exposure distributions across AQI categories, demonstrating that similar AQI labels can correspond to significantly different particulate pollution levels. Notably, even the “Good” and “Satisfactory” AQI categories frequently exceed the WHO recommended safety limit, indicating the presence of hidden exposure risks despite officially acceptable AQI conditions. Higher AQI categories exhibit broader and more elevated PM2.5 distributions, reflecting increased variability and severity of particulate pollution events.
+
+Overall, the figure highlights the limitations of relying solely on categorical AQI classifications for health risk assessment and supports the argument that AQI values may not fully capture true particulate exposure severity.
+</p>
+            </div>
+        </div>
+
+        <!-- Graph 6: Correlation Matrix -->
+        <div class="graph-card">
+            <div class="graph-header">
+                <h2>6. Inter-Pollutant Correlation Matrix</h2>
+            </div>
+            <div class="image-container">
+                <img src="vis6_correlation_matrix.png" alt="Correlation matrix heatmap of core atmospheric pollutants">
+            </div>
+            <div class="description-area">
+                <h3>Graph Description</h3>
+                <p>
+                    Pearson correlation analysis demonstrates that AQI is predominantly associated with particulate
+                     pollutants such as PM10 and PM2.5, while exhibiting substantially weaker relationships with gaseous pollutants 
+                     like ozone.This suggests that aggregate AQI metrics may inadequately capture the complexity of 
+                     multi-pollutant exposure risks.
+                    </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
